@@ -1,4 +1,4 @@
-package tema1.basicos;
+package tema1.bas;
 
 // Estos tres imports son los más habituales al trabajar con fechas
 import java.text.SimpleDateFormat;

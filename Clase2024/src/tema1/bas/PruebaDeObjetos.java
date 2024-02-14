@@ -1,4 +1,4 @@
-package tema1.basicos;
+package tema1.bas;
 
 import java.awt.Point;
 

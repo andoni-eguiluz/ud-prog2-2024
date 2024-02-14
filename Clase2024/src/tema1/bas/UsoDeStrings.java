@@ -1,4 +1,4 @@
-package tema1.basicos;
+package tema1.bas;
 
 /** Operativa básica con clase string
  * @author andoni.eguiluz @ ingenieria.deusto.es

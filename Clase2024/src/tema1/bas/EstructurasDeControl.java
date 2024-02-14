@@ -1,4 +1,4 @@
-package tema1.basicos;
+package tema1.bas;
 
 /** Ejemplos de las estructuras de control en Java
  * @author andoni.eguiluz @ ingenieria.deusto.es
