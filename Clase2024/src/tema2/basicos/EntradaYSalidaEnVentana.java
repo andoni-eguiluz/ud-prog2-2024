@@ -1,4 +1,4 @@
-package tema1.basicos;
+package tema2.basicos;
 
 import javax.swing.JOptionPane;
 
