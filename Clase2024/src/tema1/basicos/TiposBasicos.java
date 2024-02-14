@@ -1,4 +1,4 @@
-package tema2.basicos;
+package tema1.basicos;
 
 import java.util.Date;
 
