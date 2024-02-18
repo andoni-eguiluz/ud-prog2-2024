@@ -14,7 +14,7 @@ public class EstructurasDeControl {
 	
 	// Ejemplo estructuras repetitivas
 	private static void repetitivas() {
-		// Un bucle de 0 a 9 de varias maneras :
+		// Un bucle de 0 a 9 de varias maneras:
 		// For con contador
 		for (int i=0; i<10; i++) {
 			System.out.print( " " + i );
