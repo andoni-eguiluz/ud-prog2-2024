@@ -10,6 +10,7 @@ public class Ejercicio1_0iConObjetos {
 		// String[] usuarios = { "@sama", "@JeffBezos", "@BillGates", "@elonmusk" };
 		// int[] seguidores = { 1300, 61000, 62000, 128900 };
 		UsuarioRedSocial[] usuariosRS = new UsuarioRedSocial[4];
+		// Primera versión: con constructor por defecto
 		// usuariosRS[0] = new UsuarioRedSocial();
 		// usuariosRS[0].nombre = "@sams";
 		// usuariosRS[0].numSeguidores = 1300;
@@ -22,6 +23,7 @@ public class Ejercicio1_0iConObjetos {
 		// usuariosRS[3] = new UsuarioRedSocial();
 		// usuariosRS[3].nombre = "@elonmusk";
 		// usuariosRS[3].numSeguidores = 128900;
+		// Segunda versión: con constructor con parámetros (mucho más cómodo):
 		usuariosRS[0] = new UsuarioRedSocial( "@sams", 1300 );
 		usuariosRS[1] = new UsuarioRedSocial( "@JeffBezos", 61000 );
 		usuariosRS[2] = new UsuarioRedSocial( "@BillGates", 62000 );
