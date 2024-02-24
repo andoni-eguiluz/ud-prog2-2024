@@ -14,9 +14,8 @@ public class UsuarioRedSocial {
         this.numSeguidores = 0;
     }
 
-// No se podría
+// No se podría - la sobrecarga debe diferenciar la signatura
 //    public UsuarioRedSocial( String url ) {
-        //
 //    }
 
     public boolean tieneMenosSeguidoresQue( UsuarioRedSocial u2 ) {
