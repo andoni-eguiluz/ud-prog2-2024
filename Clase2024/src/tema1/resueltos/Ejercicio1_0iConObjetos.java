@@ -28,17 +28,29 @@ public class Ejercicio1_0iConObjetos {
 		usuariosRS[1] = new UsuarioRedSocial( "@JeffBezos", 61000 );
 		usuariosRS[2] = new UsuarioRedSocial( "@BillGates", 62000 );
 		usuariosRS[3] = new UsuarioRedSocial( "@elonmusk", 128900 );
-
 		visualizarUsuariosYSeguidores( usuariosRS );
 		ordenaUsuariosPorSeguidores( usuariosRS );
 		visualizarUsuariosYSeguidores( usuariosRS );
+
+		// Prueba
+		UsuarioRedSocial u = new UsuarioRedSocial("Andoni");
+		// Baja de usuarios
+		bajaSeguidores( -2500, usuariosRS );
+		visualizarUsuariosYSeguidores( usuariosRS );
+
+	}
+
+	private static void bajaSeguidores( int numBaja, UsuarioRedSocial[] usuarios ) {
+		for (int i=0; i<usuarios.length; i++) {
+			usuarios[i].setNumMilesSeguidores( usuarios[i].getNumMilesSeguidores() + numBaja );
+		}
 	}
 	
 	// Visualiza línea a línea usuario tabulador nº seguidores
 	private static void visualizarUsuariosYSeguidores(UsuarioRedSocial[] usuarios ) {
 		for (int i=0; i<usuarios.length; i++) {
 			if (usuarios[i] != null) {
-				System.out.println( usuarios[i].nombre + "\t" + usuarios[i].numSeguidores );
+				System.out.println( usuarios[i].toString() );	
 			}
 		}
 	}

@@ -1,25 +1,68 @@
 package tema1.resueltos;
 
 public class UsuarioRedSocial {
-    public String nombre = "";
-    public int numSeguidores = 0; // da igual = 0 que nada
+    private String nombre = "";
+    private int numMilesSeguidores = 0; // da igual = 0 que nada
 
-    public UsuarioRedSocial( String nombre, int numSeguidores ) {
+    /** Crea un nuevo usuario
+     * @param nombre    Nombre de ese usuario
+     * @param numMilesSeguidores Número de seguidores, en miles
+     */
+    public UsuarioRedSocial( String nombre, int numMilesSeguidores ) {
         this.nombre = nombre;
-        this.numSeguidores = numSeguidores;
+        this.setNumMilesSeguidores( numMilesSeguidores );
     }
 
+    /** Crea un nuevo usuario de red social con 0 seguidores
+     * @param nombre    Nombre del nuevo usuario
+     */
     public UsuarioRedSocial( String nombre ) {
         this.nombre = nombre;
-        this.numSeguidores = 0;
+        this.setNumMilesSeguidores( 0 );
     }
 
 // No se podría - la sobrecarga debe diferenciar la signatura
 //    public UsuarioRedSocial( String url ) {
 //    }
 
+    /** Compara los seguidores de este usuario y otro
+     * @param u2    Segundo usuario que comparar
+     * @return  true si this tiene menos seguidores que u2, false en caso contrario
+     */
     public boolean tieneMenosSeguidoresQue( UsuarioRedSocial u2 ) {
-        return this.numSeguidores < u2.numSeguidores;
+        return this.numMilesSeguidores < u2.numMilesSeguidores;
     }
+
+    /** Convierte a string el usuario, con su nombre, tabulador y sus seguidores
+     * @return  String formateado
+     */
+    public String toString() {
+        return this.nombre + "\t" + this.numMilesSeguidores;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    // Si nombre es inmutable, nos vale con no publicar set
+    // /** Modifica el nombre del usuario
+    //  * @param nombre    Nuevo nombre
+    //  */
+    // public void setNombre( String nombre ) {
+    //     this.nombre = nombre;
+    // }
+
+    public int getNumMilesSeguidores() {
+        return numMilesSeguidores;
+    }
+
+    public void setNumMilesSeguidores( int numMilesSeguidores ) {
+        this.numMilesSeguidores = numMilesSeguidores;
+        if (this.numMilesSeguidores < 0) {
+            this.numMilesSeguidores = 0;
+            System.out.println( "Error en cambio de usuario: seguidores negativos" );
+        }
+    }
+
 
 }
