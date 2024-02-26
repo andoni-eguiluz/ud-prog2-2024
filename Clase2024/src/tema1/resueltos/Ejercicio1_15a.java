@@ -1,5 +1,7 @@
 package tema1.resueltos;
 
+import javax.swing.JOptionPane;
+
 public class Ejercicio1_15a {
     public static void main(String[] args) {
         Bombilla b1 = new Bombilla();
