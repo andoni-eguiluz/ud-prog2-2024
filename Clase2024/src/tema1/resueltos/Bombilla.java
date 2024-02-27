@@ -15,13 +15,13 @@ public class Bombilla {
     /** Crea una nueva bombilla
      * @param estado    true para encendida, false para apagada
      * @param potencia  Potencia en watios (debe ser positivo)
-     * @param color Color (por ejemplo "blanco")
+     * @param color Color (por ejemplo "blanco"). NO DEBE SER null
      * @param horas Nº de horas de vida estimada (debe ser positivo)
      */
     public Bombilla(boolean estado, int potencia, String color, float horas) {
         this.estado = estado;
         this.potencia = potencia;
-        this.color = color;
+        this.setColor( color );
         this.horas = horas;
     }
 
@@ -82,8 +82,16 @@ public class Bombilla {
         this.potencia = potencia;
     }
 
+    /** Modifica el color de la bombilla
+     * @param color Nuevo color. No debe ser null. Si es null, se inicializa a ""
+     */
     public void setColor(String color) {
-        this.color = color;
+        if (color==null) {
+            this.color = "";
+            System.out.println( "Error: se ha intentado inicializar color a null" );
+        } else {
+            this.color = color;
+        }
     }
 
     /** Cambia el color. Si la bombilla está encendida la apaga.
