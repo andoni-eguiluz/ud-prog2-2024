@@ -86,4 +86,7 @@ public class UsuarioRedSocial {
         return this.nombre.equals( usuario2.nombre );
     }
 
+
+
+    
 }

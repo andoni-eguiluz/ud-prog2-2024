@@ -55,12 +55,36 @@ public class RedSocial {
      * @param usuario   Usuario a buscar
      * @return  la primera posición del usuario en la red social (de 0 a n-1) o -1 si no está
      */
-    public int buscarUsuario( UsuarioRedSocial usuario ) {
+    public int buscar( UsuarioRedSocial usuario ) {
         return usuariosRS.indexOf( usuario );
     }
 
+	/** Devuelve el tamaño de la red social
+	 * @return	Número de usuarios actuales
+	 */
     public int getNumUsuarios() {
         return usuariosRS.size();
     }
+
+	/** Borra un usuario
+	 * @param usuario	Usuario a borrar. Si no existe (comparando con equals), no se hace nada
+	 */
+	public void borrar( UsuarioRedSocial usuario ) {
+		usuariosRS.remove( usuario );
+	}	
+
+	/** Devuelve un usuario
+	 * @param indice	Posición del usuario a recuperar (de 0 a n-1)
+	 * @return	Usuario situado en esa posición
+	 */
+	public UsuarioRedSocial get( int indice ) {
+		return usuariosRS.get( indice );
+	}
+	
+	@Override
+	public String toString() {
+		return usuariosRS.toString();
+	}
+	
 
 }
