@@ -4,36 +4,37 @@ import java.awt.Color;
 
 import utils.ventanas.ventanaBitmap.VentanaGrafica;
 
-public class Circulo /* extends Object */ {
-    private int xCentro;
-    private int yCentro;
+public class Circulo extends Figura {
+    // private int xCentro;
+    // private int yCentro;
     private int radio;
-    private int grosor;
-    private Color color;
+    // private int grosor;
+    // private Color color;
 
     public Circulo(int xCentro, int yCentro, int radio, int grosor, Color color) {
-        this.xCentro = xCentro;
-        this.yCentro = yCentro;
+        super( xCentro, yCentro, grosor, color );
+        // this.xCentro = xCentro;
+        // this.yCentro = yCentro;
         this.setRadio( radio );
-        this.grosor = grosor;
-        this.color = color;
+        // this.grosor = grosor;
+        // this.color = color;
     }
 
-    public int getxCentro() {
-        return xCentro;
-    }
+    // public int getxCentro() {
+    //     return xCentro;
+    // }
 
-    public void setxCentro(int xCentro) {
-        this.xCentro = xCentro;
-    }
+    // public void setxCentro(int xCentro) {
+    //     this.xCentro = xCentro;
+    // }
 
-    public int getyCentro() {
-        return yCentro;
-    }
+    // public int getyCentro() {
+    //     return yCentro;
+    // }
 
-    public void setyCentro(int yCentro) {
-        this.yCentro = yCentro;
-    }
+    // public void setyCentro(int yCentro) {
+    //     this.yCentro = yCentro;
+    // }
 
     public int getRadio() {
         return radio;
@@ -50,21 +51,21 @@ public class Circulo /* extends Object */ {
         this.radio = radio;
     }
 
-    public int getGrosor() {
-        return grosor;
-    }
+    // public int getGrosor() {
+    //     return grosor;
+    // }
 
-    public void setGrosor(int grosor) {
-        this.grosor = grosor;
-    }
+    // public void setGrosor(int grosor) {
+    //     this.grosor = grosor;
+    // }
 
-    public Color getColor() {
-        return color;
-    }
+    // public Color getColor() {
+    //     return color;
+    // }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
+    // public void setColor(Color color) {
+    //     this.color = color;
+    // }
 
     @Override
     public String toString() {
@@ -78,14 +79,5 @@ public class Circulo /* extends Object */ {
     public void dibujar( VentanaGrafica v ) {
         v.dibujaCirculo( getxCentro(), getyCentro(), getRadio(), getGrosor(), getColor() );
     }    
-
-    /** Mueve el círculo
-     * @param incX  Incremento en coordenada x (puede ser negativo)
-     * @param incY  Incremento en coordenada y (puede ser negativo)
-     */
-    public void mover( int incX, int incY ) {
-        xCentro += incX;
-        yCentro += incY;
-    }
 
 }

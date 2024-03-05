@@ -11,17 +11,47 @@ public class EjemploFiguras {
         Circulo circ1 = new Circulo(80,90,35,2,Color.GREEN);
         listaCircs.add( circ1 );
         listaCircs.add( new Circulo( 200, 220, 45, 3, Color.BLUE ) );
+        listaCircs.add( new Circulo( 420, 350, 90, 5, Color.RED ) );
+
+        ArrayList<Cuadrado> listaCuadrados = new ArrayList<>();
+        listaCuadrados.add( new Cuadrado( 150, 120, 2, Color.CYAN, 25 ) );
+        listaCuadrados.add( new Cuadrado( 450, 180, 1, Color.BLACK, 25 ) );
+        listaCuadrados.add( new Cuadrado( 350, 240, 3, new Color(123, 255, 0), 45 ) );
+
+        ArrayList<Figura> listaFiguras = new ArrayList<>();
+        listaFiguras.addAll( listaCircs );
+        listaFiguras.addAll( listaCuadrados );
+
         VentanaGrafica vent = new VentanaGrafica( 600, 400, "Prueba" );
+            vent.getJFrame().setLocation( 2000, 50 );  // No hacer esto más que si tienes segunda pantalla
 //        vent.dibujaCirculo( 100, 100, 50, 1 );
 //        vent.dibujaCirculo( circ1.getxCentro(), circ1.getyCentro(), circ1.getRadio(), circ1.getGrosor(), circ1.getColor() );
         // circ1.dibujar( vent );
-        for (int i=0; i<20; i++) {
-            for (Circulo c : listaCircs) {
-                c.dibujar( vent );
-                c.mover( 3, 0 );
+
+
+        for (int i=0; i<200; i++) {
+            vent.borra();
+            // for (Circulo c : listaCircs) {
+            //     c.dibujar( vent );
+            //     c.mover( 1, 0 );
+            // }
+            // for (Cuadrado cua : listaCuadrados) {
+            //     cua.dibujar( vent );
+            //     cua.mover( 1, 0 );
+            // }
+            for (Figura f : listaFiguras) {
+                f.dibujar( vent );
+                f.mover( 1, 0 );
             }
-            vent.espera( 100 );
+            vent.espera( 40 );
         }
+        Figura f = new Figura( 100, 100, 1, Color.WHITE );
+        System.out.println( f );
         System.out.println( circ1 );
+        Figura f2 = circ1;
+        Figura f3 = new Cuadrado( 50, 50, 1, null, 17 );
+        // NO Cuadrado c3 = f2;  
+        // NO Cuadrado c3 = circ1;
     }
+
 }
