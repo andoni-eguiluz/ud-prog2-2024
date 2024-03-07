@@ -21,9 +21,11 @@ public class EjemploFiguras {
         ArrayList<Figura> listaFiguras = new ArrayList<>();
         listaFiguras.addAll( listaCircs );
         listaFiguras.addAll( listaCuadrados );
+        listaFiguras.add( new Imagen( 300, 280, 30, 30 ) );
+        listaFiguras.add( new Imagen( 120, 340, 30, 30 ) );
 
         VentanaGrafica vent = new VentanaGrafica( 600, 400, "Prueba" );
-            vent.getJFrame().setLocation( 2000, 50 );  // No hacer esto más que si tienes segunda pantalla
+//            vent.getJFrame().setLocation( 2000, 50 );  // No hacer esto más que si tienes segunda pantalla
 //        vent.dibujaCirculo( 100, 100, 50, 1 );
 //        vent.dibujaCirculo( circ1.getxCentro(), circ1.getyCentro(), circ1.getRadio(), circ1.getGrosor(), circ1.getColor() );
         // circ1.dibujar( vent );
@@ -42,16 +44,18 @@ public class EjemploFiguras {
             for (Figura f : listaFiguras) {
                 f.dibujar( vent );
                 f.mover( 1, 0 );
+                // TODO ¿Cómo rotar la imagen?
             }
             vent.espera( 40 );
         }
+        // Y cómo funciona el polimorfismo de datos? Veamos
         Figura f = new Figura( 100, 100, 1, Color.WHITE );
         System.out.println( f );
         System.out.println( circ1 );
-        Figura f2 = circ1;
-        Figura f3 = new Cuadrado( 50, 50, 1, null, 17 );
-        // NO Cuadrado c3 = f2;  
-        // NO Cuadrado c3 = circ1;
+        Figura f2 = circ1;  // Sí se puede (de arriba abajo en la herencia)
+        Figura f3 = new Cuadrado( 50, 50, 1, null, 17 );  // También
+        // NO Cuadrado c3 = f2;   No de abajo arriba
+        // NO Cuadrado c3 = circ1;  No en lateral
     }
 
 }

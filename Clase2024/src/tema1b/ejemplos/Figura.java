@@ -64,6 +64,7 @@ public class Figura extends Object {
         yCentro += incY;
     }
 
+    // TODO ¿Un método vacío es la mejor manera?
     public void dibujar( VentanaGrafica vent ) {
 
     }
