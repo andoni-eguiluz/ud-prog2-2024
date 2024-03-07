@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import utils.ventanas.ventanaBitmap.VentanaGrafica;
 
-public class Figura extends Object {
+public abstract class Figura extends Object {
     protected int xCentro;
     protected int yCentro;
     protected int grosor;
@@ -65,8 +65,6 @@ public class Figura extends Object {
     }
 
     // TODO ¿Un método vacío es la mejor manera?
-    public void dibujar( VentanaGrafica vent ) {
-
-    }
+    public abstract void dibujar( VentanaGrafica vent );
 
 }

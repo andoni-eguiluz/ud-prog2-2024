@@ -25,7 +25,7 @@ public class EjemploFiguras {
         listaFiguras.add( new Imagen( 120, 340, 30, 30 ) );
 
         VentanaGrafica vent = new VentanaGrafica( 600, 400, "Prueba" );
-//            vent.getJFrame().setLocation( 2000, 50 );  // No hacer esto más que si tienes segunda pantalla
+            vent.getJFrame().setLocation( 2000, 50 );  // No hacer esto más que si tienes segunda pantalla
 //        vent.dibujaCirculo( 100, 100, 50, 1 );
 //        vent.dibujaCirculo( circ1.getxCentro(), circ1.getyCentro(), circ1.getRadio(), circ1.getGrosor(), circ1.getColor() );
         // circ1.dibujar( vent );
@@ -45,12 +45,22 @@ public class EjemploFiguras {
                 f.dibujar( vent );
                 f.mover( 1, 0 );
                 // TODO ¿Cómo rotar la imagen?
+                if (f instanceof Imagen) {
+                    // ((Imagen)f).rotar(0.1);
+                    Imagen imagen = (Imagen) f;
+                    imagen.rotar(0.1);
+                }
+                // Cómo hacer que los círculos crezcan?
+                if (f instanceof Circulo) {
+                    Circulo c = (Circulo) f;
+                    c.setRadio( c.getRadio() + 1 );
+                }
             }
             vent.espera( 40 );
         }
         // Y cómo funciona el polimorfismo de datos? Veamos
-        Figura f = new Figura( 100, 100, 1, Color.WHITE );
-        System.out.println( f );
+//        Figura f = new Figura( 100, 100, 1, Color.WHITE );
+//        System.out.println( f );
         System.out.println( circ1 );
         Figura f2 = circ1;  // Sí se puede (de arriba abajo en la herencia)
         Figura f3 = new Cuadrado( 50, 50, 1, null, 17 );  // También
