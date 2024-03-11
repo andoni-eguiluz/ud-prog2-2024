@@ -37,6 +37,9 @@ public class Multimedia {
 		if (obj instanceof Multimedia) {
 			Multimedia m = (Multimedia) obj;
 			return m.nombre.equals(nombre);
+		} else if (obj instanceof String) {
+			String string = (String) obj;
+			return this.nombre.equals( string );
 		} else {
 			return false;
 		}

@@ -16,6 +16,7 @@ public class GestionArchivo {
 		do {
 			Object resp = JOptionPane.showInputDialog( null, "Elige opción", "¿Qué quieres hacer?", JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "Añadir", "Modificar", "Buscar", "Borrar", "Ver" }, "Añadir" );
+			// String respS = (String) resp; (solo si sé que es string)
 			if ("Añadir".equals(resp)) {
 				anyadir();
 			} else if ("Modificar".equals(resp)) {
@@ -57,6 +58,14 @@ public class GestionArchivo {
 	
 	private static void modificar() {
 		String resp = JOptionPane.showInputDialog( null, "Introduce nombre recurso a modificar:" );
+		// Se podría hacer así sin comprometer el equals:
+		// int indice = -1;
+		// for (int i=0; i<lista.size(); i++) {
+		// 	if (lista.get(i).getNombre().equals( resp )) {
+		// 		indice = i;
+		// 	}
+		// }
+		// O así teniendo en cuenta el equals:
 		int posi = lista.indexOf( new Multimedia(resp) );
 		if (posi != -1) {
 			lista.get( posi ).pedir();
