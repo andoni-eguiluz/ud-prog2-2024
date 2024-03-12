@@ -25,7 +25,7 @@ public class Clicker {
         listaFiguras.add( new Imagen( 120, 340, 30, 30 ) );
 
         VentanaGrafica vent = new VentanaGrafica( 600, 400, "Prueba" );
-            vent.getJFrame().setLocation( 2000, 50 );  // No hacer esto más que si tienes segunda pantalla
+        //    vent.getJFrame().setLocation( 2000, 50 );  // No hacer esto más que si tienes segunda pantalla
 
         for (int i=0; i<200; i++) {
             vent.borra();
