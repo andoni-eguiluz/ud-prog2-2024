@@ -5,25 +5,24 @@ import java.awt.Color;
 import utils.ventanas.ventanaBitmap.VentanaGrafica;
 
 public class Cuadrado extends Figura implements Rotable, Colorizable {
-    private int lado;
-    private double rotacion = 0.0;
 
-    private int incRojo = +5; // Colorizable
+	private int lado;
+	private double rotacion = 0.0;
+	private int incColor = +5; // Colorizable
+	
+	public Cuadrado(int xCentro, int yCentro, int grosor, Color color, int lado) {
+		super(xCentro, yCentro, grosor, color);
+		this.lado = lado;
+	}
 
-    public Cuadrado(int xCentro, int yCentro, int grosor, Color color, int lado) {
-        super(xCentro, yCentro, grosor, color);
-        this.lado = lado;
-    }
+	public int getLado() {
+		return lado;
+	}
 
-    public int getLado() {
-        return lado;
-    }
+	public void setLado(int lado) {
+		this.lado = lado;
+	}
 
-    public void setLado(int lado) {
-        this.lado = lado;
-    }
-
-    @Override
     public void dibujar( VentanaGrafica vent ) {
         // vent.dibujaRect( xCentro-lado/2, yCentro-lado/2, lado, lado, grosor, color );
         double radio = Math.sqrt( lado * lado / 2.0 );
@@ -31,19 +30,23 @@ public class Cuadrado extends Figura implements Rotable, Colorizable {
     }
 
     @Override
+    public String toString() {
+    	return "Cuadrado " + super.toString() + " Lado = " + lado;
+    }
+
+    @Override
     public void rotar( double incRotacion ) {
         rotacion += incRotacion;
     }
 
-    @Override
-    public void animaColor() {
-        int nuevoRojo = this.color.getRed() + incRojo;
-        if (nuevoRojo < 0 || nuevoRojo > 255) {
-            incRojo = -incRojo;
-            nuevoRojo += incRojo;
-        }
-        color = new Color( nuevoRojo, color.getGreen(), color.getBlue() );
-    }
-
-
+	// Colorizable
+	public void animaColor() {
+		int nuevoRojo = color.getRed() + incColor;
+		if (nuevoRojo > 255 || nuevoRojo < 0) {
+			incColor = -incColor;
+			nuevoRojo += incColor;
+		}
+		color = new Color( nuevoRojo, color.getGreen(), color.getBlue() );
+	}
+    
 }
