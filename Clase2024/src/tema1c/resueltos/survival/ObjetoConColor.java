@@ -2,12 +2,11 @@ package tema1c.resueltos.survival;
 
 import java.awt.Color;
 
-public abstract class ObjetoJuegoConColor extends ObjetoJuego {
-	// private double x; NO - ya lo estoy heredando
+public abstract class ObjetoConColor extends ObjetoJuego {
 	protected Color colorBorde;
 	protected Color colorFondo;
-
-	public ObjetoJuegoConColor(double x, double y, Color colorBorde, Color colorFondo) {
+	
+	public ObjetoConColor(double x, double y, Color colorBorde, Color colorFondo) {
 		super(x, y);
 		this.colorBorde = colorBorde;
 		this.colorFondo = colorFondo;
@@ -28,5 +27,7 @@ public abstract class ObjetoJuegoConColor extends ObjetoJuego {
 	public void setColorFondo(Color colorFondo) {
 		this.colorFondo = colorFondo;
 	}
+	
+	
 	
 }
