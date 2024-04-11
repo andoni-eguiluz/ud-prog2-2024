@@ -16,6 +16,7 @@ public class GestionDeFechas {
 
 	// El throws ParseException lo entenderemos más adelante al ver excepciones
 	public static void main(String[] args) throws ParseException {
+		System.out.println( System.currentTimeMillis() );
 		comoFuncionanLasFechas();
 		formateoYParsingDeFechas();
 		cogiendoDatosDelObjetoDate();

@@ -70,7 +70,7 @@ public class ConceptoForEach {
 		for (String s : lStrings) {
 			System.out.print( s + "  " );
 			// if (s.equals("a")) lStrings.remove(s);  // Si se quitan los comentarios da error de ejecución
-			// if (s.equals("c")) lStrings.add(0,"j");  // Si se quitan los comentarios da error de ejecución
+			if (s.equals("c")) lStrings.add(0,"j");  // Si se quitan los comentarios da error de ejecución
 		}
 		System.out.println();
 	}
