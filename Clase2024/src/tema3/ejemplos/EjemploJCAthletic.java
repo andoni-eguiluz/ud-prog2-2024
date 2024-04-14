@@ -1,6 +1,6 @@
 package tema3.ejemplos;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class EjemploJCAthletic {
 
@@ -43,6 +43,55 @@ public class EjemploJCAthletic {
 	private static void pruebaJCStrings() {
 		goleadores = cargaGoleadores();
 		System.out.println( goleadores );
+		if (goleadores.contains("Sancet")) {
+			System.out.println( "Sancet ha metido gol" );
+		}
+		// Linkedlist -> otra lista
+		LinkedList<String> listaEnl = new LinkedList<String>();
+		for (String jugador : goleadores) {
+			listaEnl.add( jugador );
+		}
+		System.out.println( listaEnl );
+		if (listaEnl.contains("Sancet")) {
+			System.out.println( "Sancet está en la linked list" );
+		}
+
+		// Sets: sin repetición, sín índice
+		HashSet<String> conjuntoHash = new HashSet<>();
+		for (String jugador : goleadores) {
+			conjuntoHash.add( jugador );
+		}
+		System.out.println( conjuntoHash );
+		if (conjuntoHash.contains( "Sancet" )) {
+			System.out.println( "Sancet está en el conjunto" );
+		}
+		// Se puede recorrer
+		System.out.println( "Recorrido de conjunto hash: ");
+		for (String j : conjuntoHash) {
+			System.out.println( "  " + j );
+		}
+
+		// Treeset - igual pero con orden
+		TreeSet<String> conjuntoTree = new TreeSet<>();
+		for (String jugador : goleadores) {
+			conjuntoTree.add( jugador );
+		}
+		System.out.println( conjuntoTree );
+
+		// Mapa: para qué?
+		HashMap<String,Integer> mapaHash = new HashMap<>();
+		// Carga:
+		for (String jugador : goleadores) {
+			if (mapaHash.containsKey(jugador)) {
+				int numGoles = mapaHash.get(jugador);
+				numGoles++;
+				mapaHash.replace( jugador, numGoles );
+			} else {
+				mapaHash.put( jugador, 1 );
+			}
+		}
+		System.out.println( mapaHash );
+
 	}
 	
 }
