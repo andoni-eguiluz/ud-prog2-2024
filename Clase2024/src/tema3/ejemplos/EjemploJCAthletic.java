@@ -34,11 +34,32 @@ public class EjemploJCAthletic {
 		return ret;
 	}
 
+	private static ArrayList<String> cargaPartidos() {
+		ArrayList<String> ret = new ArrayList<>();
+		for (int i=0; i<GOLES_COPA.length; i++) {
+			ret.add( (String) GOLES_COPA[i][2] );
+		}
+		return ret;
+	}
+
+
 	private static ArrayList<String> goleadores;
 	
 	public static void main(String[] args) {
-		pruebaJCStrings();
+		// pruebaJCStrings();
+		pruebaClasesComoClave();
 	}
+
+	private static void pruebaClasesComoClave() {
+		// Jugadores solo una vez cada uno - nuestra propia clase Jugador
+		ArrayList<String> jugadores = cargaGoleadores();
+		HashSet<Jugador> setJugs = new HashSet<>();
+		for (String jug : jugadores) {
+			setJugs.add( new Jugador(jug) );
+		}
+		System.out.println( setJugs );
+	}
+
 	
 	private static void pruebaJCStrings() {
 		goleadores = cargaGoleadores();
@@ -78,7 +99,7 @@ public class EjemploJCAthletic {
 		}
 		System.out.println( conjuntoTree );
 
-		// Mapa: para qué?
+		// Mapa: para qué? Por ejemplo cálculo de goleadores
 		HashMap<String,Integer> mapaHash = new HashMap<>();
 		// Carga:
 		for (String jugador : goleadores) {
@@ -91,6 +112,62 @@ public class EjemploJCAthletic {
 			}
 		}
 		System.out.println( mapaHash );
+		// for (Integer val : mapaHash.values()) {
+		// 	System.out.println( "Goles: " + val );
+		// }
+		for (String jug : mapaHash.keySet()) {
+			System.out.println( "Jugador " + jug + " - goles " + mapaHash.get(jug) );
+		}
+
+		// Con treemap
+		TreeMap<String,Integer> mapaTree = new TreeMap<>();
+		for (String jugador : goleadores) {
+			if (!mapaTree.containsKey(jugador)) {
+				mapaTree.put( jugador, new Integer(1) );
+			} else {
+				// mapaTree.get( jugador )++;   No se puede porque Integer es inmutable
+				int golesAnt = mapaTree.get( jugador );
+				golesAnt++;
+				mapaTree.replace( jugador, golesAnt );
+			}
+		}
+		System.out.println( mapaTree );
+
+		// Rehecho con contador mutable
+		TreeMap<String,EnteroMutable> mapaTree2 = new TreeMap<>();
+		for (String jugador : goleadores) {
+			if (!mapaTree2.containsKey(jugador)) {
+				mapaTree2.put( jugador, new EnteroMutable(1) );
+			} else {
+				mapaTree2.get(jugador).inc();
+			}
+		}
+		System.out.println( mapaTree2 );
+
+		// ¿Cómo sacar la lista de partidos de gol de cada goleador?
+		ArrayList<String> partidos = cargaPartidos();
+		HashMap<String,ArrayList<String>> mapaPartidos = new HashMap<>();
+		for (int i=0; i<goleadores.size(); i++) {
+			String jugador = goleadores.get(i);
+			String partido = partidos.get(i);
+			// if (!mapaPartidos.containsKey(jugador)) {
+			// 	ArrayList<String> lista = new ArrayList<>();
+			// 	mapaPartidos.put( jugador, lista );
+			// 	lista.add( partido );
+			// } else {
+			// 	ArrayList<String> lista = mapaPartidos.get( jugador );
+			// 	lista.add( partido );
+			// }
+			mapaPartidos.putIfAbsent( jugador, new ArrayList<>() );
+			// if (!mapaPartidos.containsKey(jugador)) {
+			// 	mapaPartidos.put( jugador, new ArrayList<>() );
+			// }
+			mapaPartidos.get( jugador ).add( partido );
+		}
+		System.out.println( mapaPartidos );
+		for (String jugador : mapaPartidos.keySet()) {
+			System.out.println( "  " + jugador + " - goles en " + mapaPartidos.get(jugador) );
+		}
 
 	}
 	
