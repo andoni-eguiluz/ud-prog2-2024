@@ -2,7 +2,7 @@ package tema3.ejercicios;
 
 import java.util.*;
 
-/** Ejercicio de Java Collections
+/** Ejercicio de Java Collections 
  * Preparado para sacar equipos del calendario de partidos de la liga de fútbol desde una web
  * Utilizado para practicar con Java Collections
  * @author andoni.eguiluz at ingenieria.deusto.es
