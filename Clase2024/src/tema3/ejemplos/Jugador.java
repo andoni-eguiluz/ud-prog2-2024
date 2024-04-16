@@ -1,6 +1,6 @@
 package tema3.ejemplos;
 
-public class Jugador {
+public class Jugador implements Comparable<Jugador> {
     private String nombre;
 
     public Jugador(String nombre) {
@@ -20,5 +20,22 @@ public class Jugador {
         return nombre;
     }
     
-    
+    @Override
+    public int hashCode() {
+        return nombre.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Jugador) {
+            Jugador j = (Jugador) obj;
+            return nombre.equals( j.nombre );
+        }
+        return false;
+    }
+
+    @Override
+    public int compareTo(Jugador o) {
+        return -o.nombre.compareTo( this.nombre );
+    }
 }

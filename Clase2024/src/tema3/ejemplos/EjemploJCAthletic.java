@@ -56,8 +56,19 @@ public class EjemploJCAthletic {
 		HashSet<Jugador> setJugs = new HashSet<>();
 		for (String jug : jugadores) {
 			setJugs.add( new Jugador(jug) );
+			System.out.println( setJugs );
 		}
 		System.out.println( setJugs );
+		for (Jugador j : setJugs) {
+			System.out.println( "  * " + j );
+		}
+
+		// Qué pasa con el treeset?
+		TreeSet<Jugador> setTreeJ = new TreeSet<>();
+		for (String jug : jugadores) {
+			setTreeJ.add( new Jugador(jug) );
+			System.out.println( setTreeJ );
+		}
 	}
 
 	
