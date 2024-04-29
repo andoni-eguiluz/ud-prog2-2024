@@ -7,8 +7,11 @@ import java.util.Scanner;
  */
 public class EjemploExcepciones1 {
 	public static void main(String[] args) {
+		System.out.println( "Inicio del programa" );
 		excepcionNoGestionada();
+		System.out.println( "Punto entre llamadas" );
 		excepcionGestionada();
+		System.out.println( "Fin del programa" );
 	}
 	
 	private static void excepcionNoGestionada() {
