@@ -1,8 +1,5 @@
 package tema4.ejemplos;
 
-import java.util.NoSuchElementException;
-import java.util.StringTokenizer;
-
 /** Clase para objetos de película, ejemplo para practicar gestión de ficheros con ella
  * @author andoni.eguiluz at ingenieria.deusto.es
  */
