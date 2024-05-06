@@ -1,11 +1,16 @@
 package tema4.resueltos;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 // Prueba con ficheros de pelis
 public class PruebaPelis {
@@ -20,6 +25,11 @@ public class PruebaPelis {
         System.out.println( l );
         ArrayList<Peli> l2 = leerFicheroObjetos( "pelis.dat" );
         System.out.println( l2 );
+
+        // Intentarlo con ficheros de texto
+        guardarFicheroTexto( l, "pelis.txt" );
+        ArrayList<Peli> l3 = leerFicheroTexto( "pelis.txt" );
+        System.out.println( l3 );
     }
 
     // escribir a disco
@@ -45,18 +55,51 @@ public class PruebaPelis {
             ArrayList<Peli> l = (ArrayList<Peli>) ois.readObject();
             ois.close();
             return l;
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException | ClassCastException e) {
             return null;
         }
     }
 
+    // Guardar la lista a fichero, si hay cualquier error saca un mensaje a consola
     private static void guardarFicheroTexto( ArrayList<Peli> l, String nombre ) {
         // TODO PrintStream
+        try {
+            PrintStream ps = new PrintStream( nombre );  // new FileOutputStream( nombre )
+            // ps.println( l );
+            for (Peli peli : l) {
+                ps.println( peli.aLineaCSV() );
+            }
+            ps.close();
+        } catch (FileNotFoundException e) {
+            System.out.println( "Error al escribir fichero" );
+            e.printStackTrace();
+        }
+
     }
 
+    // Lee fichero y lo devuelve, si hay error completo de lectura se devuelve null y se saca mensaje consola
     private static ArrayList<Peli> leerFicheroTexto( String nombre ) {
         // TODO Scanner
-        return null;
+        try {
+            ArrayList<Peli> ret = new ArrayList<>();
+            Scanner scanner = new Scanner( new FileInputStream( nombre ) );
+            int numLinea = 1;
+            while (scanner.hasNextLine()) {
+                String linea = scanner.nextLine();
+                try {
+                    Peli peliLeida = Peli.creaPeliDesdeLineaCSV( linea );
+                    ret.add( peliLeida );
+                } catch (NumberFormatException | NullPointerException | NoSuchElementException e) {
+                    System.out.println( "Línea de fichero errónea: " + numLinea + ":" + linea );
+                }
+                numLinea++;
+            }
+            scanner.close();
+            return ret;
+        } catch (FileNotFoundException e) {
+            System.out.println( "Error en lectura" );
+            return null;
+        }
     }
 
 }
