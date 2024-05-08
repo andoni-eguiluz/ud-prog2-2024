@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class DeustoIkea {
@@ -162,8 +161,7 @@ public class DeustoIkea {
 		// File -> Scanner -> while -> nextLine -> split -> new Objeto
 		File f = new File("ikea-tiendas.csv");
 		try {
-			Scanner sc = new Scanner(f);
-			
+			Scanner sc = new Scanner(f, "UTF-8");  // Ojo al UTF-8
 			while (sc.hasNextLine()) {
 				String linea = sc.nextLine();
 				String[] campos = linea.split(";");
@@ -174,6 +172,7 @@ public class DeustoIkea {
 				Tienda nueva = new Tienda(nombre, direc, tipo, horario);
 				tiendas.add(nueva);
 			}			
+			sc.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -230,8 +229,7 @@ public class DeustoIkea {
 	private static void cargarMueblesCSV(ArrayList<Mueble> muebles) {
 		File f = new File("ikea-muebles.csv");
 		try {
-			Scanner sc = new Scanner(f);
-			
+			Scanner sc = new Scanner(f, "UTF-8");  // Ojo UTF-8
 			while (sc.hasNextLine()) {
 				String linea = sc.nextLine();
 				String[] campos = linea.split(",");
@@ -249,6 +247,7 @@ public class DeustoIkea {
 				}
 				muebles.add(nuevo);
 			}
+			sc.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
