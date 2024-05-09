@@ -123,6 +123,23 @@ public class DeustoIkea {
 	}
 
 	private static Tienda tiendaMasOnline(ArrayList<Tienda> tiendas) {
+		// Alternativa: mapa de contadores
+		HashMap<String,Integer> mapaContadores = new HashMap<>();
+		// Suponiendo que el nombre de la tienda (String) sea único
+		for (Tienda tienda : tiendas) {
+			mapaContadores.put( tienda.getNombre(), tienda.totalMueblesOnline() );
+		}
+		String nombreTiendaMayor = "";
+		int contMayor = -1;
+		for (String nombre : mapaContadores.keySet()) {
+			int numMuebles = mapaContadores.get(nombre);
+			if (numMuebles > contMayor) {
+				nombreTiendaMayor = nombre;
+				contMayor = numMuebles;
+			}
+		}
+		
+		// Otra opción sin mapa de contadores
 		Tienda mayor = tiendas.get(0);
 		
 		for (Tienda tienda : tiendas) {
@@ -184,14 +201,22 @@ public class DeustoIkea {
 		
 		for (Mueble mueble : muebles) {
 			String cat = mueble.getCategoria();
-			if (mapa.containsKey(cat)) {
-				// añado este mueble a la lista de esta categoria
-				mapa.get(cat).add(mueble);
-			} else {
+			if (!mapa.containsKey(cat)) {
 				// introduzco esa categoria en el mapa
 				mapa.put(cat, new ArrayList<Mueble>());
 				// añado este mueble a la lista de esta categoria
 				mapa.get(cat).add(mueble);
+			} else {
+				// añado este mueble a la lista de esta categoria
+				// NOOOOOOOOOOOOOO
+				// ArrayList<Mueble> l = mapa.get(cat);
+				// l = new ArrayList<>();
+				// l.add(mueble);
+				// Así...
+				// mapa.get(cat).add(mueble);
+				// O así:
+				ArrayList<Mueble> l = mapa.get(cat);
+				l.add(mueble);
 			}
 		}
 		
@@ -206,7 +231,7 @@ public class DeustoIkea {
 			if (mapa.containsKey(cat)) {
 				// sumo 1 al total
 				int valor = mapa.get(cat) + 1;
-				mapa.put(cat, valor);
+				mapa.put(cat, valor);  // replace
 			} else {
 				// introduzco esa categoria en el mapa
 				mapa.put(cat, 1);
@@ -227,25 +252,30 @@ public class DeustoIkea {
 	}
 
 	private static void cargarMueblesCSV(ArrayList<Mueble> muebles) {
+		// muebles = new ArrayList<>();  // NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 		File f = new File("ikea-muebles.csv");
 		try {
 			Scanner sc = new Scanner(f, "UTF-8");  // Ojo UTF-8
 			while (sc.hasNextLine()) {
 				String linea = sc.nextLine();
-				String[] campos = linea.split(",");
-				int codigo = Integer.parseInt(campos[0]);
-				String nombre = campos[1];
-				String cat = campos[2];
-				double precio = Double.parseDouble(campos[3]);
-				boolean online = Boolean.parseBoolean(campos[4]);
-				String url = campos[5];
-				Mueble nuevo;
-				if (online) {
-					nuevo = new MuebleOnline(codigo, nombre, cat, precio, url);
-				} else {
-					nuevo = new Mueble(codigo, nombre, cat, precio);
+				try {
+					String[] campos = linea.split(",");
+					int codigo = Integer.parseInt(campos[0]);
+					String nombre = campos[1];
+					String cat = campos[2];
+					double precio = Double.parseDouble(campos[3]);
+					boolean online = Boolean.parseBoolean(campos[4]);
+					String url = campos[5];
+					Mueble nuevo;
+					if (online) {
+						nuevo = new MuebleOnline(codigo, nombre, cat, precio, url);
+					} else {
+						nuevo = new Mueble(codigo, nombre, cat, precio);
+					}
+					muebles.add(nuevo);
+				} catch (Exception e) {
+					System.out.println( "Error en fichero de muebles" );
 				}
-				muebles.add(nuevo);
 			}
 			sc.close();
 		} catch (FileNotFoundException e) {
