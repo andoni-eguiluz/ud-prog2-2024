@@ -138,7 +138,7 @@ public class DeustoIkea {
 				contMayor = numMuebles;
 			}
 		}
-		
+
 		// Otra opción sin mapa de contadores
 		Tienda mayor = tiendas.get(0);
 		
@@ -255,7 +255,7 @@ public class DeustoIkea {
 		// muebles = new ArrayList<>();  // NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 		File f = new File("ikea-muebles.csv");
 		try {
-			Scanner sc = new Scanner(f, "UTF-8");  // Ojo UTF-8
+			Scanner sc = new Scanner(f);  // Ojo UTF-8
 			while (sc.hasNextLine()) {
 				String linea = sc.nextLine();
 				try {
