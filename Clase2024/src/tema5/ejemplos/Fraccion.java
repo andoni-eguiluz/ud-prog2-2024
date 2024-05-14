@@ -18,6 +18,17 @@ public class Fraccion implements Comparable<Fraccion> {
 		this.den = den;
 	}
 
+	public int getNum() {
+		return num;
+	}
+
+	public int getDen() {
+		return den;
+	}
+
+	/** Calcula el valor real correspondiente a la fracción
+	 * @return	Número real resultado de dividir numerador entre denominador
+	 */
 	public double calcular() {
 		return 1.0*num/den;
 	}
