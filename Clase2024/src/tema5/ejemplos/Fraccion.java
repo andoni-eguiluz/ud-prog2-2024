@@ -16,6 +16,9 @@ public class Fraccion implements Comparable<Fraccion> {
 		super();
 		this.num = num;
 		this.den = den;
+		if (den==0) {
+			throw new ArithmeticException( "Fracción con denominador cero" );
+		}
 	}
 
 	public int getNum() {
@@ -66,6 +69,10 @@ public class Fraccion implements Comparable<Fraccion> {
 	 * @throws NullPointerException	Si alguna de las fracciones es null
 	 */
 	public static Fraccion suma( Fraccion f1, Fraccion f2 ) throws NullPointerException {
+		if (f1==null || f2 == null) {
+			// return null;
+			throw new NullPointerException();
+		}
 		return new Fraccion( f1.num*f2.den + f2.num*f1.den, f1.den*f2.den );
 	}
 	
@@ -114,11 +121,17 @@ public class Fraccion implements Comparable<Fraccion> {
 		return den+num;
 	}
 
+	// Igualdad funcione de acuerdo a la equivalencia de fracciones (ej 1/2 == 2/4)
+	/** Compara dos fracciones de acuerdo a su equivalencia numérica. Se devuelve true
+	 * si las fracciones this y obj simplificadas son la misma
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Fraccion) {
 			Fraccion f2 = (Fraccion) obj;
-			return num==f2.num && den==f2.den;
+			Fraccion f1simp = this.simplifica();
+			Fraccion f2simp = f2.simplifica();
+			return f1simp.num==f2simp.num && f1simp.den==f2simp.den;
 		} else {
 			return false;
 		}
